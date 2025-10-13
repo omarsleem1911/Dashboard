@@ -7,7 +7,7 @@ import OnboardClientModal from '../../components/forms/OnboardClientModal';
 const mockClients: Client[] = [
   {
     id: 1,
-    companyName: 'X',
+    companyName: 'Sample Client (With Agents)',
     contactPerson: 'Ahmed Al Mansouri, IT Director',
     email: 'ahmed.almansouri',
     phone: '+971 4 362 2222',
@@ -132,7 +132,8 @@ const ClientsOverview: React.FC = () => {
   const engineers = [...new Set(clients.map(client => client.deploymentEngineer))];
 
   const handleClientClick = (clientId: number) => {
-    navigate(`/clients/${clientId}/daily`);
+    const clientUuid = clientId === 1 ? '550e8400-e29b-41d4-a716-446655440000' : clientId.toString();
+    navigate(`/clients/${clientUuid}/daily`);
   };
 
   const handleOnboardClient = (newClientData: any) => {
